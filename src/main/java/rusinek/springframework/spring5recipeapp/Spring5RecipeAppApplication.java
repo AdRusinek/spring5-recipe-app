@@ -10,9 +10,4 @@ public class Spring5RecipeAppApplication {
         SpringApplication.run(Spring5RecipeAppApplication.class, args);
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-        //123
-    }
 }
