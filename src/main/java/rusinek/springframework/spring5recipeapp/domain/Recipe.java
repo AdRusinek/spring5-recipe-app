@@ -30,7 +30,7 @@ public class Recipe {
 
     // table recipe_category, from first direction it uses recipe_id and coming back I have category_id
     // creating recipe-category table in hibernate, and from this side of the relationship i have join column
-    // called recipe_id and ont the other side for the categories I have category_id
+    // called recipe_id and ont the other side for thee categories I have category_id
     @ManyToMany
     @JoinTable(name = "recipe_category",
         joinColumns =  @JoinColumn(name = "recipe_id"),
