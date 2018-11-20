@@ -8,6 +8,7 @@ public class Recipe {
 
 
     // this is going to leverage the underlying persistence framework to generate ID value for us
+    // Only a test
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
