@@ -1,6 +1,7 @@
 package rusinek.springframework.spring5recipeapp.domain;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Recipe {
@@ -19,6 +20,12 @@ public class Recipe {
     private String directions;
     // todo add
     // private Difficulty difficulty
+
+    // we are saying that this recipe will get stored on a property on the set of ingredients on each object
+    // is going to be a property called recipe. So we are getting set of ingredients coming back
+    // I used set because I will have unique set of Ingredients
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private Set<Ingredient> ingredients;
 
     // "binary large object"
     @Lob
@@ -107,5 +114,13 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+    }
+
+    public Set<Ingredient> getIngredients() {
+        return ingredients;
+    }
+
+    public void setIngredients(Set<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 }
