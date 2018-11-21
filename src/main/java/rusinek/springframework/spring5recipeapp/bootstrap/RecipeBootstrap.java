@@ -126,18 +126,21 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "Read more: http://www.simplyrecipes.com/recipes/perfect_guacamole/#ixzz4jvoun5ws");
 
         // in the bellow note it is explained
-        guacamoleNotes.setRecipe(guacamoleRecipe);
+        // needed for bidirectional - should be one method call (We can comment that now because we did
+        // bi directional method.
+//        guacamoleNotes.setRecipe(guacamoleRecipe);
         guacamoleRecipe.setNotes(guacamoleNotes);
 
+        // very redundant could add helper method, and make it simpler
         // in the last Ingredient argument in constructor I included recipe object to have an id in the DB
-        guacamoleRecipe.getIngredients().add(new Ingredient("ripe avocados",new BigDecimal(2),eachUom,guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("Kosher salt", new BigDecimal(".5"), teapoonUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(2), tableSpoonUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tableSpoonUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("serrano chiles, stems and seeds removed, minced", new BigDecimal(2), eachUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("Cilantro", new BigDecimal(2), tableSpoonUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom, guacamoleRecipe));
-        guacamoleRecipe.getIngredients().add(new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(".5"), eachUom, guacamoleRecipe));
+        guacamoleRecipe.addIngredient(new Ingredient("ripe avocados",new BigDecimal(2),eachUom));
+        guacamoleRecipe.addIngredient(new Ingredient("Kosher salt", new BigDecimal(".5"), teapoonUom));
+        guacamoleRecipe.addIngredient(new Ingredient("fresh lime juice or lemon juice", new BigDecimal(2), tableSpoonUom));
+        guacamoleRecipe.addIngredient(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tableSpoonUom));
+        guacamoleRecipe.addIngredient(new Ingredient("serrano chiles, stems and seeds removed, minced", new BigDecimal(2), eachUom));
+        guacamoleRecipe.addIngredient(new Ingredient("Cilantro", new BigDecimal(2), tableSpoonUom));
+        guacamoleRecipe.addIngredient(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom));
+        guacamoleRecipe.addIngredient(new Ingredient("ripe tomato, seeds and pulp removed, chopped", new BigDecimal(".5"), eachUom));
 
         guacamoleRecipe.getCategories().add(americanCategory);
         guacamoleRecipe.getCategories().add(mexicanCategory);
@@ -175,28 +178,29 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
                 "\n" +
                 "Read more: http://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/#ixzz4jvu7Q0MJ");
 
-        sgcTacosNotes.setRecipe(spicyGrilledChickenTacos);
+        // explained up 
+//        sgcTacosNotes.setRecipe(spicyGrilledChickenTacos);
         spicyGrilledChickenTacos.setNotes(sgcTacosNotes);
 
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("Ancho Chili Powder", new BigDecimal(2), tableSpoonUom,spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("Dried Oregano", new BigDecimal(1), teapoonUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("Dried Cumin", new BigDecimal(1), teapoonUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("Sugar", new BigDecimal(1), teapoonUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("Salt", new BigDecimal(".5"), teapoonUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("Clove of Garlic, Choppedr", new BigDecimal(1), eachUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("finely grated orange zestr", new BigDecimal(1), tableSpoonUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("fresh-squeezed orange juice", new BigDecimal(3), tableSpoonUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("Olive Oil", new BigDecimal(2), tableSpoonUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("boneless chicken thighs", new BigDecimal(4), tableSpoonUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("small corn tortillasr", new BigDecimal(8), eachUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("packed baby arugula", new BigDecimal(3), cupsUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("medium ripe avocados, slic", new BigDecimal(2), eachUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("radishes, thinly sliced", new BigDecimal(4), eachUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("cherry tomatoes, halved", new BigDecimal(".5"), pintUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("red onion, thinly sliced", new BigDecimal(".25"), eachUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("Roughly chopped cilantro", new BigDecimal(4), eachUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("cup sour cream thinned with 1/4 cup milk", new BigDecimal(4), cupsUom, spicyGrilledChickenTacos));
-        spicyGrilledChickenTacos.getIngredients().add(new Ingredient("lime, cut into wedges", new BigDecimal(4), eachUom, spicyGrilledChickenTacos));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("Ancho Chili Powder", new BigDecimal(2), tableSpoonUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("Dried Oregano", new BigDecimal(1), teapoonUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("Dried Cumin", new BigDecimal(1), teapoonUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("Sugar", new BigDecimal(1), teapoonUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("Salt", new BigDecimal(".5"), teapoonUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("Clove of Garlic, Choppedr", new BigDecimal(1), eachUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("finely grated orange zestr", new BigDecimal(1), tableSpoonUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("fresh-squeezed orange juice", new BigDecimal(3), tableSpoonUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("Olive Oil", new BigDecimal(2), tableSpoonUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("boneless chicken thighs", new BigDecimal(4), tableSpoonUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("small corn tortillasr", new BigDecimal(8), eachUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("packed baby arugula", new BigDecimal(3), cupsUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("medium ripe avocados, slic", new BigDecimal(2), eachUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("radishes, thinly sliced", new BigDecimal(4), eachUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("cherry tomatoes, halved", new BigDecimal(".5"), pintUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("red onion, thinly sliced", new BigDecimal(".25"), eachUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("Roughly chopped cilantro", new BigDecimal(4), eachUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("cup sour cream thinned with 1/4 cup milk", new BigDecimal(4), cupsUom));
+        spicyGrilledChickenTacos.addIngredient(new Ingredient("lime, cut into wedges", new BigDecimal(4), eachUom));
 
         spicyGrilledChickenTacos.getCategories().add(americanCategory);
         spicyGrilledChickenTacos.getCategories().add(mexicanCategory);

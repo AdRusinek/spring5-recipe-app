@@ -37,8 +37,8 @@ public class Recipe {
     // called recipe_id and ont the other side for thee categories I have category_id
     @ManyToMany
     @JoinTable(name = "recipe_category",
-        joinColumns =  @JoinColumn(name = "recipe_id"),
-        inverseJoinColumns = @JoinColumn(name = "category_id"))
+            joinColumns = @JoinColumn(name = "recipe_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
 
     // "binary large object"
@@ -56,6 +56,13 @@ public class Recipe {
     // delete notes.
     @OneToOne(cascade = CascadeType.ALL)
     private Notes notes;
+
+    // convinience method but it also encapsulate logic in one spot
+    public Recipe addIngredient(Ingredient ingredient) {
+        ingredient.setRecipe(this);
+        this.ingredients.add(ingredient);
+        return this;
+    }
 
     public Long getId() {
         return id;
@@ -135,6 +142,8 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        // we built an association
+        notes.setRecipe(this);
     }
 
     public Set<Ingredient> getIngredients() {
