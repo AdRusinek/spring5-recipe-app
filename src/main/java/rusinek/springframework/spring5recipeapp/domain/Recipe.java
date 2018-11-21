@@ -1,6 +1,7 @@
 package rusinek.springframework.spring5recipeapp.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,6 +20,7 @@ public class Recipe {
     private Integer servings;
     private String source;
     private String url;
+    @Lob
     private String directions;
     // todo add
     // private Difficulty difficulty
@@ -27,7 +29,8 @@ public class Recipe {
     // is going to be a property called recipe. So we are getting set of ingredients coming back
     // I used set because I will have unique set of Ingredients
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    private Set<Ingredient> ingredients;
+    // we are creating a new instance to avoid null pointer exception
+    private Set<Ingredient> ingredients = new HashSet<>();
 
     // table recipe_category, from first direction it uses recipe_id and coming back I have category_id
     // creating recipe-category table in hibernate, and from this side of the relationship i have join column
@@ -36,7 +39,7 @@ public class Recipe {
     @JoinTable(name = "recipe_category",
         joinColumns =  @JoinColumn(name = "recipe_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<Category> categories;
+    private Set<Category> categories = new HashSet<>();
 
     // "binary large object"
     @Lob
