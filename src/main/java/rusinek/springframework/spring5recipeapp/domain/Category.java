@@ -1,8 +1,16 @@
 package rusinek.springframework.spring5recipeapp.domain;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 import javax.persistence.*;
 import java.util.Set;
 
+// lombok includes getter/setter/hashcode/equals/to string/req args constructor
+@Data
+@EqualsAndHashCode(exclude = {"recipes"}) // this will tell to exclude from equals and hashcode the recipes property
+// and I needed to that on other entities.
+// without this there was an error because of bidirectional relationship
 @Entity
 public class Category {
 
@@ -15,27 +23,4 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private Set<Recipe> recipes;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<Recipe> getRecipes() {
-        return recipes;
-    }
-
-    public void setRecipes(Set<Recipe> recipes) {
-        this.recipes = recipes;
-    }
 }

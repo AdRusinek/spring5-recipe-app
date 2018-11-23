@@ -1,8 +1,10 @@
 package rusinek.springframework.spring5recipeapp.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import rusinek.springframework.spring5recipeapp.domain.*;
 import rusinek.springframework.spring5recipeapp.repositories.CategoryRepository;
 import rusinek.springframework.spring5recipeapp.repositories.RecipeRepository;
@@ -13,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Component
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -28,8 +31,12 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
 
     // that will save everything coming out of the repositories
     @Override
+    @Transactional // by doing this on the application event this will direct the spring framework
+    // to create a transaction around this method. so now everything is going to happen in the same
+    // transactional context and we won't and by doing it this way there won't be lazy init exception
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         recipeRepository.saveAll(getRecipes());
+        log.debug("Loading bootstrap data");
     }
 
     private List<Recipe> getRecipes() {
