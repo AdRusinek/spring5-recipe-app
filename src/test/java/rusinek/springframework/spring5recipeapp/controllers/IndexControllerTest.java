@@ -3,7 +3,6 @@ package rusinek.springframework.spring5recipeapp.controllers;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.ArgumentMatcher;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
@@ -17,9 +16,7 @@ import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
@@ -48,6 +45,7 @@ public class IndexControllerTest {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(indexController).build();
 
         // this is get from te root ctx / isOk() is checking for status 200 to test if all is good and the return st. return index
+        mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index"));
         mockMvc.perform(get("/")).andExpect(status().isOk()).andExpect(view().name("index"));
     }
 

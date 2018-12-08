@@ -48,7 +48,7 @@ public class Recipe {
     @Lob
     private Byte[] image;
 
-    // There is ORDINAL and STRING (ORDINAL is default so if this will not be specified JPA will take this one)
+    // There is ORDINAL and STRING (ORDINAL is default so if this will not be specified JPA w   ill take this one)
     // this will not help if new enum type in the future will be added because it will change the order
     // and mess up our DB.
     // STRING overrides it
