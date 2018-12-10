@@ -1,8 +1,8 @@
 package rusinek.springframework.spring5recipeapp.converters;
 
-import jdk.internal.jline.internal.Nullable;
 import lombok.Synchronized;
 import org.springframework.core.convert.converter.Converter;
+import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 import rusinek.springframework.spring5recipeapp.commands.RecipeCommand;
 import rusinek.springframework.spring5recipeapp.domain.Category;
@@ -16,8 +16,8 @@ public class RecipeToRecipeCommand implements Converter<Recipe, RecipeCommand> {
     private final NotesToNotesCommand notesConverter;
     private final IngredientToIngredientCommand ingredientConverter;
 
-    public RecipeToRecipeCommand(CategoryToCategoryCommand categoryConverter, NotesToNotesCommand notesConverter,
-                 IngredientToIngredientCommand ingredientConverter) {
+    public RecipeToRecipeCommand(CategoryToCategoryCommand categoryConverter,
+                                 IngredientToIngredientCommand ingredientConverter , NotesToNotesCommand notesConverter) {
         this.categoryConverter = categoryConverter;
         this.notesConverter = notesConverter;
         this.ingredientConverter = ingredientConverter;

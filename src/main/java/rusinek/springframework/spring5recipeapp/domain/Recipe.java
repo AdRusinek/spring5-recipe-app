@@ -68,9 +68,10 @@ public class Recipe {
     }
 
     public void setNotes(Notes notes) {
-        this.notes = notes;
-        // we built an association
-        notes.setRecipe(this);
+        if (notes != null) {
+            this.notes = notes;
+            notes.setRecipe(this);
+        }
     }
 
 }
