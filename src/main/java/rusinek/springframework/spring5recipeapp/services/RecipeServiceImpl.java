@@ -48,6 +48,14 @@ public class RecipeServiceImpl implements RecipeService {
         return recipeOptional.get();
     }
 
+    // need to be transactional because it is done outside the scope, so If there would appear lazy loaded property
+    // it would crash
+    @Override
+    @Transactional
+    public RecipeCommand findCommandById(Long id) {
+        return recipeToRecipeCommand.convert(findById(id));
+    }
+
     @Override
     @Transactional
     public RecipeCommand saveRecipeCommand(RecipeCommand command) {
