@@ -25,8 +25,6 @@ public class Recipe {
     private String url;
     @Lob
     private String directions;
-    // todo add
-    // private Difficulty difficulty
 
     // we are saying that this recipe will get stored on a property on the set of ingredients on each object
     // is going to be a property called recipe. So we are getting set of ingredients coming back
