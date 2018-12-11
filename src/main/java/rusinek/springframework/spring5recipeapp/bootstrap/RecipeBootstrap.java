@@ -156,7 +156,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacamoleRecipe.setServings(4);
         guacamoleRecipe.setSource("Simply Recipes");
 
-        // add to return list
+        // add to return ingredient
         recipes.add(guacamoleRecipe);
 
         // Spicy Grilled Chicken Tacos
