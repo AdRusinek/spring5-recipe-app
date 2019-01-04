@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>List Ingredients</title>
+    <title>View Ingredient</title>
 
     <!-- Google Font-->
     <link href="https://fonts.googleapis.com/css?family=Abel|Exo+2:400,700" rel="stylesheet">
@@ -47,7 +47,7 @@
             margin: auto;
             margin-top: 130px;
             margin-bottom: 30px;
-            width: 70%;
+            width: 40%;
             padding: 28px;
             background: rgba(0,0,0,0.8);
             border-radius:  19px;
@@ -100,41 +100,32 @@
 </nav>
 <div id="mainContainer" class="container-fluid" style="margin-top: 20px">
     <div class="row">
-        <div class="col-md-12 col-md-offset-5">
+        <div class="col-md-12 col-md-offset-3">
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h1  style="margin-bottom: 3rem" class="panel-title">Ingredients</h1>
+                    <h1 class="panel-title">Ingredient</h1>
                 </div>
                 <div class="panel-body">
 
-                    <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.ingredients)}">
+                    <div class="table-responsive">
                         <table class="table table-hover ">
                             <thead class="thead-inverse">
-                            <tr id="page-description">
-                                <th style="border: none">Description</th>
-                                <th style="border: none">View</th>
-                                <th style="border: none">Update</th>
-                                <th style="border: none">Delete</th>
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
-                                <td>Tasty Goodnees 1</td>
-                                <td><a href="#" class="viewLook">View</a></td>
-                                <td><a href="#" class="viewLook">Update</a></td>
-                                <td><a href="#" class="viewLook">Delete</a></td>
-                            </tr>
-                            <tr th:remove="all">
+                                <td>12333</td>
                                 <td>Tasty Goodnees 2</td>
-                                <td><a href="#" class="viewLook">View</a></td>
-                                <td><a href="#" class="viewLook">Update</a></td>
-                                <td><a href="#" class="viewLook">Delete</a></td>
+                                <td><a href="#">View</a></td>
+                                <td><a href="#">Update</a></td>
+                                <td><a href="#">Delete</a></td>
                             </tr>
-                            <tr th:each="ingredient : ${recipe.ingredients}">
-                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.unit.getDescription()} + ' ' + ${ingredient.description} + '/show'">Tasty Goodnees 3</td>
-                                <td><a href="#" class="viewLook" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/show'}">View</a></td>
-                                <td><a href="#" class="viewLook" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a></td>
-                                <td><a href="#" class="viewLook" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a></td>
+                            <tr>
+                                <td th:text="${ingredient.id}">334</td>
+                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.unit.getDescription()} + ' ' + ${ingredient.description}">Tasty Goodnees 3</td>
                             </tr>
                         </table>
                     </div>
@@ -143,15 +134,6 @@
         </div>
     </div>
 </div>
-<!-- Optional JS / jQuery -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
+
 </body>
 </html>

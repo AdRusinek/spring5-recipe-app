@@ -1,73 +1,103 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Recipe Home</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-          crossorigin="anonymous"
-          th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}">
+    <meta charset="UTF-8">
+    <title>My Recipes</title>
+    <!-- Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Abel|Exo+2:400,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        body {
 
-    <!-- I use this th:href links to replace the code from sources to code from webjars -->
+            background: url("http://www.amifood.be/wp-content/uploads/2017/04/image-6.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: "Abel";
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
 
-    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+        html{
+            height: 100%;
+        }
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-            crossorigin="anonymous"
-            th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+        #mainNavbar {
+            padding-bottom: 0px;
+            padding-top: 0px;
+            background: rgba(0,213,0,0.5);
+            font-size: 1.6rem;
+            font-weight: 700;
+            /*border-bottom: black solid 3px;*/
+            box-shadow: 0px -2px 32px 6px rgba(12,13,12,1);
+            color: black;
+        }
+
+
+        #mainNavbar .navbar-brand {
+            font-size: 1.6rem;
+            color: #f4f6ff;
+        }
+
+        #jumbo {
+            border-radius:  19px;
+            color: white;
+            margin: 100px;
+            background: rgba(0,0,0,0.8);
+
+        }
+
+        #navbarSupportedContent a {
+            color: black;
+        }
+
+    </style>
 </head>
 <body>
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-<!-- sdfdsfdsfsdf -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/recipes">Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="recipe/new">Create Recipe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<!--up of the page gives us space-->
-<div class="container-fluid" style="margin-top: 20px">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-primary">  <!--rounding of the panel-->
-
-                <div class="panel-heading">
-                    <h1 class="panel-title">My Recipes!</h1>
-                </div>
-                <div class="panel-body">
-                    <div class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">
-                        <table class="table table-hover"> <!-- it gives dark mode when we move the mouse -->
-                            <thead class="thead-inverse">
-                            <tr>
-                                <th>ID</th>
-                                <th>Description</th>
-                                <th>View</th>
-                                <th>Update</th>
-                                <th>Delete</th>
-                            </tr>
-                            </thead>
-                            <tr th:remove="all">
-                                <td>123</td>
-                                <td>Tasty dish 1</td>
-                                <td><a href="#">View</a></td>
-                            </tr>
-                            <tr th:remove="all">
-                                <td>12333</td>
-                                <td>Tasty dish 2</td>
-                                <td><a href="#">View</a></td>
-                            </tr>
-                            <tr th:each="recipe : ${recipes}">
-                                <td th:text="${recipe.id}">123</td>
-                                <td th:text="${recipe.description}">Tasty goodness 3</td>
-                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/show'}">View</a> </td>
-                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a></td>
-                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/delete'}">Delete</a></td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
+<section>
+    <div id="jumbo" class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Best Recipes</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
         </div>
     </div>
-</div>
+</section>
 
+<!-- Optional JS / jQuery -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+        crossorigin="anonymous"></script>
 </body>
 </html>

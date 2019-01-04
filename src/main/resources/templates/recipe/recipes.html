@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>All recipes</title>
+    <!-- Google Font-->
+    <link href="https://fonts.googleapis.com/css?family=Abel|Exo+2:400,700" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <!-- Custom CSS -->
+    <style>
+        body {
+
+            background: url("http://www.amifood.be/wp-content/uploads/2017/04/image-6.jpg");
+            background-size: cover;
+            background-position: center;
+            font-family: "Abel";
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        html{
+            height: 100%;
+        }
+
+        #mainNavbar {
+            padding-bottom: 0px;
+            padding-top: 0px;
+            background: rgba(0,213,0,0.5);
+            font-size: 1.6rem;
+            font-weight: 700;
+            /*border-bottom: black solid 3px;*/
+            box-shadow: 0px -2px 32px 6px rgba(12,13,12,1);
+            color: black;
+        }
+
+        #mainNavbar .navbar-brand {
+            font-size: 1.6rem;
+            color: #f4f6ff;
+        }
+
+        #mainContainer {
+            text-align: center;
+            color: #f4f6ff;
+            margin: auto;
+            margin-top: 60px;
+            margin-bottom: 60px;
+            width: 70%;
+            height: 30rem;
+            padding: 40px;
+            background: rgba(0,0,0,0.8);
+            border-radius:  19px;
+        }
+
+        .viewLook {
+            color: lawngreen;
+
+        }
+
+        .viewLook:hover {
+            color: limegreen;
+        }
+
+        #page-description {
+            font-size: 1.4rem;
+            text-underline-mode: false;
+        }
+
+        #navbarSupportedContent a {
+            color: black;
+        }
+</style>
+</head>
+<body>
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/index">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="recipe/new">Create Recipe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Categories</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <div id="mainContainer" class="container-fluid" >
+        <div class="row">
+            <div class="col-lg-12 col-md-offset-5">
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        <h1 style="margin-bottom: 3rem" class="panel-title">My Recipes!</h1>
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">
+                            <table class="table table-hover">
+                                <thead class="thead-inverse">
+                                <tr id="page-description">
+                                    <th style="border: none">Description</th>
+                                    <th style="border: none">View</th>
+                                    <th style="border: none">Update</th>
+                                    <th style="border: none">Delete</th>
+                                </tr>
+                                </thead>
+                                <tr th:remove="all">
+                                    <td>Tasty Goodnees 1</td>
+                                    <td><a href="#" class="viewLook">View</a></td>
+                                    <td><a href="#" class="viewLook">Update</a></td>
+                                    <td><a href="#" class="viewLook">Delete</a></td>
+                                </tr>
+                                <tr th:remove="all">
+                                    <td>Tasty Goodnees 2</td>
+                                    <td><a href="#" class="viewLook">View</a></td>
+                                    <td><a href="#" class="viewLook">Update</a></td>
+                                    <td><a href="#" class="viewLook">Delete</a></td>
+                                </tr>
+                                <tr th:remove="all">
+                                    <td>Tasty Goodnees 3</td>
+                                    <td><a href="#" class="viewLook">View</a></td>
+                                    <td><a href="#" class="viewLook">Update</a></td>
+                                    <td><a href="#" class="viewLook">Delete</a></td>
+                                </tr>
+                                <tr th:each="recipe : ${recipes}">
+                                    <td th:text="${recipe.description}">Tasty Goodnees 3</td>
+                                    <td><a href="#" class="viewLook" th:href="@{'/recipe/' + ${recipe.id} + '/show'}">View</a></td>
+                                    <td><a href="#" class="viewLook" th:href="@{'/recipe/' + ${recipe.id} + '/update'}">Update</a></td>
+                                    <td><a href="#" class="viewLook" th:href="@{'/recipe/' + ${recipe.id} + '/delete'}">Delete</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Optional JS / jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+            integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+            crossorigin="anonymous"></script>
+</body>
+</html>
