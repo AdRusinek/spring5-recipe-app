@@ -10,17 +10,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class CategoryToCategoryCommand implements Converter<Category, CategoryCommand> {
 
-    @Nullable
     @Synchronized
+    @Nullable
     @Override
     public CategoryCommand convert(Category source) {
-        if(source == null) {
+        if (source == null) {
             return null;
         }
-        CategoryCommand categoryCommand = new CategoryCommand();
+
+        final CategoryCommand categoryCommand = new CategoryCommand();
+
         categoryCommand.setId(source.getId());
         categoryCommand.setDescription(source.getDescription());
 
         return categoryCommand;
-    }
-}
+    }}

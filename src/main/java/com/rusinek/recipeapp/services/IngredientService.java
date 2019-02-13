@@ -4,5 +4,7 @@ import com.rusinek.recipeapp.commands.IngredientCommand;
 
 public interface IngredientService {
 
-    IngredientCommand findByRecipeIdAnIngredientdId(Long recipeId, Long ingredientId);
+    IngredientCommand findByRecipeIdAndIngredientId(Long recipeId, Long ingredientId);
+
+    IngredientCommand saveIngredientCommand(IngredientCommand command);
 }

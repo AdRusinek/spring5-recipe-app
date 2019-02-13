@@ -1,132 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Recipe Form</title>
 
-    <!-- Google Font-->
-    <link href="https://fonts.googleapis.com/css?family=Abel|Exo+2:400,700" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <style>
-        body {
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+" crossorigin="anonymous">
 
-            background: url("http://www.amifood.be/wp-content/uploads/2017/04/image-6.jpg");
-            background-size: cover;
-            background-position: center;
-            font-family: "Abel";
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css" integrity="sha384-jzngWsPS6op3fgRCDTESqrEJwRKck+CILhJVO5VvaAZCq8JYf8HsR/HPpBOOPZfR" crossorigin="anonymous">
 
-        html{
-            height: 100%;
-        }
-
-        #mainNavbar {
-            padding-bottom: 0px;
-            padding-top: 0px;
-            background: rgba(0,213,0,0.5);
-            font-size: 1.6rem;
-            font-weight: 700;
-            /*border-bottom: black solid 3px;*/
-            box-shadow: 0px -2px 32px 6px rgba(12,13,12,1);
-            color: black;
-        }
-
-
-        #mainNavbar .navbar-brand {
-            font-size: 1.6rem;
-            color: #f4f6ff;
-        }
-
-        #navbarSupportedContent a {
-            color: black;
-        }
-
-        #entire-form {
-            justify-content: center;
-        }
-
-        .top-div {
-            text-align: center;
-            color: #f4f6ff;
-            margin: auto;
-            width: 50%;
-            padding: 50px;
-            background: rgba(0,0,0,0.8);
-            border-radius:  19px;
-            margin-top: 60px;
-            margin-bottom: 60px;
-        }
-
-        #sumbit-button {
-            background: rgba(0,213,0,0.5);
-            font-size: 1.6rem;
-            box-shadow: 0px -2px 32px 6px rgba(12,13,12,1);
-            color: black;
-            border: lime;
-            width: 15rem;
-            border-radius: 10rem;
-            margin-top: 3rem;
-            transition: box-shadow 0.3s ease-in-out;
-        }
-
-        #sumbit-button:hover {
-            background: rgba(0,270,0,0.6);
-        }
-
-        #recipe-description {
-            margin-top: 3rem;
-            margin-bottom: 3rem;
-        }
-
-        #edit-button {
-            color: black;
-            box-shadow: 0px -2px 32px 6px rgba(12,13,12,1);
-            background: rgba(0,213,0,0.5);
-            font-size: 1.6rem;
-            width: 8rem;
-            border-radius: 10rem;
-        }
-
-        #edit-button:hover {
-            background: rgba(0,270,0,0.6);
-        }
-
-    </style>
-
-</head>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" integrity="sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw" crossorigin="anonymous"></script></head>
 <body>
-<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="/">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/recipes">Recipes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Create Recipe</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Categories</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<div id="entire-form" class="container-fluid" >
+<!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+<div class="container-fluid" style="margin-top: 20px">
     <div class="row">
-        <div class="col-md-6 col-md-offset-3 top-div">
-            <form th:object="${recipe}" th:action="@{/recipe/}">
+        <div class="col-md-6 col-md-offset-3">
+            <form  th:object="${recipe}" th:action="@{/recipe/}" method="post">
                 <input type="hidden" th:field="*{id}"/>
                 <div class="pannel-group">
                     <div class="panel panel-primary">
@@ -134,7 +25,7 @@
                             <h1 class="panel-title">Edit Recipe Information</h1>
                         </div>
                         <div class="panel-body">
-                            <div id="recipe-description" style="width: 90rem" class="row">
+                            <div class="row">
                                 <div class="col-md-3 form-group">
                                     <label>Recipe Description:</label>
                                     <input type="text" class="form-control" th:field="*{description}"/>
@@ -144,14 +35,14 @@
                                 <div class="col-md-3 form-group">
                                     <label>Categories:</label>
                                 </div>
-                                <div style="text-align: left" class="col-md-9 form-group">
+                                <div class="col-md-9 form-group">
                                     <div class="radio">
                                         <label>
                                             <input type="checkbox" value=""/>
                                             Cat 1
                                         </label>
                                     </div>
-                                    <div class="radio">
+                                    <div class="radio" th:remove="all">
                                         <label>
                                             <input type="checkbox" value=""/>
                                             Cat 2
@@ -160,16 +51,16 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 form-group">
-                                    <label>Prep Time: </label>
+                                <div class="col-md-3 form-group">
+                                    <label>Prep Time:</label>
                                     <input type="text" class="form-control" th:field="*{prepTime}"/>
                                 </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Cooktime: </label>
+                                <div class="col-md-3 form-group">
+                                    <label>Cooktime:</label>
                                     <input type="text" class="form-control" th:field="*{cookTime}"/>
                                 </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Difficulty: </label>
+                                <div class="col-md-3 form-group">
+                                    <label>Difficulty:</label>
                                     <select class="form-control">
                                         <option>Easy</option>
                                         <option>Medium</option>
@@ -178,71 +69,73 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-4 form-group">
-                                    <label>Servings: </label>
+                                <div class="col-md-3 form-group">
+                                    <label>Servings:</label>
                                     <input type="text" class="form-control" th:field="*{servings}"/>
                                 </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Source: </label>
+                                <div class="col-md-3 form-group">
+                                    <label>Source:</label>
                                     <input type="text" class="form-control" th:field="*{source}"/>
                                 </div>
-                                <div class="col-md-4 form-group">
-                                    <label>URL: </label>
+                                <div class="col-md-3 form-group">
+                                    <label>URL:</label>
                                     <input type="text" class="form-control" th:field="*{url}"/>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 50px; margin-bottom: 40px;" class="panel panel-primary">
+                    <div class="panel panel-primary">
                         <div class="panel-heading">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <h1 class="panel-title">Ingredients </h1>
-                                    <a id="edit-button" class="btn btn-default" href="#" role="button">Edit</a>
+                                <div class="col-md-11 ">
+                                    <h1 class="panel-title">Ingredients</h1>
+                                </div>
+                                <div class="col-md-1">
+                                    <a class="btn btn-default" href="#" role="button">View</a>
                                 </div>
                             </div>
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <ul style="text-align: left">
+                                    <ul th:if="${not #lists.isEmpty(recipe.ingredients)}">
                                         <li th:remove="all">1 Cup of milk</li>
                                         <li th:remove="all">1 Teaspoon of chocolate</li>
+                                        <li th:remove="all">asdf</li>
                                         <li th:each="ingredient : ${recipe.ingredients}"
                                             th:text="${(ingredient.getAmount() +
-                                        ' ' + ingredient.unit.getDescription() +
+                                        ' ' + ingredient.uom.getDescription() +
                                         ' - ' + ingredient.getDescription())}">1 Teaspoon of Sugar
                                         </li>
                                     </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Directions </h1>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <textarea style="height: 17rem" class="form-control" rows="3" th:field="*{directions}"></textarea>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">Directions</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <textarea class="form-control" rows="3" th:field="*{directions}"></textarea></div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div style="margin-top: 50px;" class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h1 class="panel-title">Notes </h1>
-                    </div>
-                    <div class="panel-body" >
-                        <div class="row">
-                            <div class="col-md-12 form-group">
-                                <textarea style="height: 17rem" class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h1 class="panel-title">Notes</h1>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <textarea class="form-control" rows="3" th:field="*{notes.recipeNotes}"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <button id="sumbit-button" type="submit" class="btn btn-primary hoverable">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>

@@ -4,137 +4,58 @@
     <meta charset="UTF-8"/>
     <title>List Ingredients</title>
 
-    <!-- Google Font-->
-    <link href="https://fonts.googleapis.com/css?family=Abel|Exo+2:400,700" rel="stylesheet">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <style>
-        body {
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css" integrity="sha384-PmY9l28YgO4JwMKbTvgaS7XNZJ30MK9FAZjjzXtlqyZCqBY6X6bXIkM++IkyinN+" crossorigin="anonymous">
 
-            background: url("http://www.amifood.be/wp-content/uploads/2017/04/image-6.jpg");
-            background-size: cover;
-            background-position: center;
-            font-family: "Abel";
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap-theme.min.css" integrity="sha384-jzngWsPS6op3fgRCDTESqrEJwRKck+CILhJVO5VvaAZCq8JYf8HsR/HPpBOOPZfR" crossorigin="anonymous">
 
-        html{
-            height: 100%;
-        }
-
-        #mainNavbar {
-            padding-bottom: 0px;
-            padding-top: 0px;
-            background: rgba(0,213,0,0.5);
-            font-size: 1.6rem;
-            font-weight: 700;
-            /*border-bottom: black solid 3px;*/
-            box-shadow: 0px -2px 32px 6px rgba(12,13,12,1);
-            color: black;
-        }
-
-        #mainNavbar .navbar-brand {
-            font-size: 1.6rem;
-            color: #f4f6ff;
-        }
-
-        #mainContainer {
-            text-align: center;
-            color: #f4f6ff;
-            margin: auto;
-            margin-top: 130px;
-            margin-bottom: 30px;
-            width: 70%;
-            padding: 28px;
-            background: rgba(0,0,0,0.8);
-            border-radius:  19px;
-        }
-
-        .viewLook {
-            color: lawngreen;
-
-        }
-
-        .viewLook:hover {
-            color: limegreen;
-        }
-
-        #page-description {
-            font-size: 1.4rem;
-            text-underline-mode: false;
-        }
-
-        #navbarSupportedContent a {
-            color: black;
-        }
-
-
-    </style>
-</head>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js" integrity="sha384-vhJnz1OVIdLktyixHY4Uk3OHEwdQqPppqYR8+5mjsauETgLOcEynD9oPHhhz18Nw" crossorigin="anonymous"></script></head>
 <body>
-<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href="/index">Home</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Recipes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="recipe/new">Create Recipe</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Categories</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Contact</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<div id="mainContainer" class="container-fluid" style="margin-top: 20px">
+<!--/*@thymesVar id="recipe" type="guru.springframework.domain.Recipe"*/-->
+<!--/*@thymesVar id="ingredients" type="java.util.Set<guru.springframework.commands.IngredientCommand>"*/-->
+<div class="container-fluid" style="margin-top: 20px">
     <div class="row">
-        <div class="col-md-12 col-md-offset-5">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
 
                 <div class="panel-heading">
-                    <h1  style="margin-bottom: 3rem" class="panel-title">Ingredients</h1>
+                    <h1 class="panel-title">Ingredients</h1>
                 </div>
                 <div class="panel-body">
 
                     <div class="table-responsive" th:if="${not #lists.isEmpty(recipe.ingredients)}">
                         <table class="table table-hover ">
                             <thead class="thead-inverse">
-                            <tr id="page-description">
-                                <th style="border: none">Description</th>
-                                <th style="border: none">View</th>
-                                <th style="border: none">Update</th>
-                                <th style="border: none">Delete</th>
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
+                                <th>View</th>
+                                <th>Update</th>
+                                <th>Delete</th>
                             </tr>
                             </thead>
                             <tr th:remove="all">
+                                <td>123</td>
                                 <td>Tasty Goodnees 1</td>
-                                <td><a href="#" class="viewLook">View</a></td>
-                                <td><a href="#" class="viewLook">Update</a></td>
-                                <td><a href="#" class="viewLook">Delete</a></td>
+                                <td><a href="#">View</a></td>
+                                <td><a href="#">Update</a></td>
+                                <td><a href="#">Delete</a></td>
                             </tr>
                             <tr th:remove="all">
+                                <td>12333</td>
                                 <td>Tasty Goodnees 2</td>
-                                <td><a href="#" class="viewLook">View</a></td>
-                                <td><a href="#" class="viewLook">Update</a></td>
-                                <td><a href="#" class="viewLook">Delete</a></td>
+                                <td><a href="#">View</a></td>
+                                <td><a href="#">Update</a></td>
+                                <td><a href="#">Delete</a></td>
                             </tr>
                             <tr th:each="ingredient : ${recipe.ingredients}">
-                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.unit.getDescription()} + ' ' + ${ingredient.description} + '/show'">Tasty Goodnees 3</td>
-                                <td><a href="#" class="viewLook" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/show'}">View</a></td>
-                                <td><a href="#" class="viewLook" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a></td>
-                                <td><a href="#" class="viewLook" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a></td>
+                                <td th:text="${ingredient.id}">334</td>
+                                <td th:text="${ingredient.amount} + ' ' + ${ingredient.uom.getDescription()} + ' ' + ${ingredient.description}">Tasty Goodnees 3</td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/show'}">View</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/update'}">Update</a></td>
+                                <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredient/' + ${ingredient.id} + '/delete'}">Delete</a></td>
                             </tr>
                         </table>
                     </div>
@@ -143,15 +64,6 @@
         </div>
     </div>
 </div>
-<!-- Optional JS / jQuery -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-        crossorigin="anonymous"></script>
+
 </body>
 </html>

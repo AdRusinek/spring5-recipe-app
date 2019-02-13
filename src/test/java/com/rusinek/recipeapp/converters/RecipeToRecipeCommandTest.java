@@ -2,12 +2,16 @@ package com.rusinek.recipeapp.converters;
 
 import com.rusinek.recipeapp.commands.RecipeCommand;
 import com.rusinek.recipeapp.domain.*;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.*;
 
-class RecipeToRecipeCommandTest {
+public class RecipeToRecipeCommandTest {
 
     public static final Long RECIPE_ID = 1L;
     public static final Integer COOK_TIME = Integer.valueOf("5");
@@ -23,24 +27,22 @@ class RecipeToRecipeCommandTest {
     public static final Long INGRED_ID_1 = 3L;
     public static final Long INGRED_ID_2 = 4L;
     public static final Long NOTES_ID = 9L;
-
     RecipeToRecipeCommand converter;
 
-
-    @BeforeEach
+    @Before
     public void setUp() throws Exception {
         converter = new RecipeToRecipeCommand(
-                new NotesToNotesCommand(),
+                new CategoryToCategoryCommand(),
                 new IngredientToIngredientCommand(new UnitOfMeasureToUnitOfMeasureCommand()),
-                new CategoryToCategoryCommand());
+                new NotesToNotesCommand());
     }
 
-    @Test
+    @org.junit.Test
     public void testNullObject() throws Exception {
         assertNull(converter.convert(null));
     }
 
-    @Test
+    @org.junit.Test
     public void testEmptyObject() throws Exception {
         assertNotNull(converter.convert(new Recipe()));
     }
