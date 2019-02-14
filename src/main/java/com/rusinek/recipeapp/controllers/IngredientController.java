@@ -1,6 +1,8 @@
 package com.rusinek.recipeapp.controllers;
 
 import com.rusinek.recipeapp.commands.IngredientCommand;
+import com.rusinek.recipeapp.commands.RecipeCommand;
+import com.rusinek.recipeapp.commands.UnitOfMeasureCommand;
 import com.rusinek.recipeapp.services.IngredientService;
 import com.rusinek.recipeapp.services.RecipeService;
 import com.rusinek.recipeapp.services.UnitOfMeasureService;
@@ -40,6 +42,37 @@ public class IngredientController {
                                        @PathVariable String id, Model model){
         model.addAttribute("ingredient", ingredientService.findByRecipeIdAndIngredientId(Long.valueOf(recipeId), Long.valueOf(id)));
         return "recipe/ingredient/show";
+    }
+
+    @GetMapping
+    @RequestMapping("recipe/{recipeId}/ingredient/new")
+    public String newRecipe(@PathVariable String recipeId, Model model) {
+
+        // make sure that is correct id value
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.valueOf(recipeId));
+        //todo raise exception if null
+
+        // need to return back parent id for hidden form property
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setRecipeId(Long.valueOf(recipeId));
+        model.addAttribute("ingredient", ingredientCommand);
+        //init uom
+        ingredientCommand.setUom(new UnitOfMeasureCommand());
+
+        model.addAttribute("uomList",unitOfMeasureService.listAllUoms());
+
+        return "recipe/ingredient/ingredientform";
+    }
+
+    @GetMapping
+    @RequestMapping("recipe/{recipeId}/ingredient/{id}/delete")
+    public String deleteIngredient(@PathVariable String recipeId,
+                                   @PathVariable String id) {
+
+        log.debug("deleting ingredient id: " + id);
+        ingredientService.deleteById(Long.valueOf(recipeId),Long.valueOf(id));
+
+        return "redirect:/recipe/" + recipeId + "/ingredients";
     }
 
     @GetMapping
