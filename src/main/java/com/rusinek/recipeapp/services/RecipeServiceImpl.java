@@ -4,6 +4,7 @@ import com.rusinek.recipeapp.commands.RecipeCommand;
 import com.rusinek.recipeapp.converters.RecipeCommandToRecipe;
 import com.rusinek.recipeapp.converters.RecipeToRecipeCommand;
 import com.rusinek.recipeapp.domain.Recipe;
+import com.rusinek.recipeapp.exceptions.NotFoundException;
 import com.rusinek.recipeapp.repositories.RecipeRepository;
 import lombok.Synchronized;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +45,7 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
         if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
+            throw new NotFoundException("Recipe Not Found!");
         }
 
         return recipeOptional.get();
